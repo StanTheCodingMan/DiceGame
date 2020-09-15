@@ -1,0 +1,66 @@
+using System;
+
+namespace Projekt
+{
+    class Program
+    {
+       
+        static void Main(string[] args)
+        {
+
+            Random rnd = new Random();
+            bool spil = true;
+            int totalp = 0;
+
+            Console.WriteLine("Hej velkommen til terningskast!");
+            do
+            {
+                int kast1 = rnd.Next(1, 7);
+                int kast2 = rnd.Next(1, 7);
+                int kast3 = rnd.Next(1, 7);
+                Console.WriteLine(kast1);
+                Console.WriteLine(kast2);
+                Console.WriteLine(kast3);
+                int point = kast1 + kast2 + kast3;
+                if (kast1 == kast2)
+                {
+                    point = kast1 * kast2 + kast3;
+                    Console.WriteLine("Du fik to ens!");
+                }
+                else if (kast1 == kast3)
+                {
+                    point = kast1 * kast3 + kast2;
+                    Console.WriteLine("Du fik to ens!");
+                }
+                else if (kast2 == kast3)
+                {
+                    point = kast1 * kast3 + kast2;
+                    Console.WriteLine("Du fik to ens!");
+                }
+                else if (kast1 + kast2 == kast3 / 2)
+                {
+                    point = kast1 * kast2 * kast3;
+                    Console.WriteLine("Du fik tre ens!");
+                }
+
+                totalp += point;
+
+                Console.WriteLine("Du scorede:" + point + "!");
+                Console.WriteLine("Du har i alt scoret: " + totalp + "!");
+                Console.WriteLine("Vil du spille igen? y/n");
+                if (Console.ReadKey(true).KeyChar == 'y')
+                {
+
+                }
+                else if (Console.ReadKey(true).KeyChar == 'x')
+                {
+                    spil = false;
+                }
+                else
+                {
+
+                }
+            } while (spil == true);
+        }
+    }
+}
